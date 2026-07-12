@@ -1,21 +1,22 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FileManager {
 
-    public void saveAllStudents(String filePath, ArrayList<Student> students){
+    public void saveAllStudents(String filePath, HashMap<String,Student> students){
 
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
             bufferedWriter.write("----------Student Data----------");
             bufferedWriter.newLine();
             bufferedWriter.newLine();
-            for(Student student : students) {
+            for(Student student : students.values()) {
                 bufferedWriter.write(student.toString());
                 bufferedWriter.newLine();
                 bufferedWriter.newLine();
             }
             bufferedWriter.write("----------End Of Student Data----------");
-            System.out.println("All Student Printed Sucessfully");
+            System.out.println("All Student Printed Successfully");
         }catch (IOException e){
             System.out.println("Could not Write File! Check File Path");
         } catch (Exception e){
@@ -23,30 +24,28 @@ public class FileManager {
         }
     }
 
-    public void saveStudent(String filePath,String rbt, ArrayList<Student> students){
-        boolean found = false;
-        for(Student student : students){
-            if (student.getRbtNumber().equals(rbt)){
-                try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
-                    bufferedWriter.write("----------Student Data----------");
-                    bufferedWriter.newLine();
-                    bufferedWriter.newLine();
-                    bufferedWriter .write(student.toString());
-                    bufferedWriter.newLine();
-                    bufferedWriter.newLine();
-                    bufferedWriter.write("----------End Of Student Data----------");
-                }catch (IOException e){
-                    System.out.println("Could not Write File! Check File Path");
-                }catch (Exception e){
-                    System.out.println("Something Went Wrong!");
-                }
-                found = true;
-                System.out.println("Student Saved Successfully");
-                break;
+    public void saveStudent(String filePath,String rbt, HashMap<String,Student> students){
+
+        if (students.containsKey(rbt)){
+            try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
+                bufferedWriter.write("----------Student Data----------");
+                bufferedWriter.newLine();
+                bufferedWriter.newLine();
+                bufferedWriter.write(String.valueOf(students.get(rbt)));
+                bufferedWriter.newLine();
+                bufferedWriter.newLine();
+                bufferedWriter.write("----------End Of Student Data----------");
             }
+            catch (IOException e){
+                System.out.println("Could not Write File! Check File Path");
+            } catch (Exception e){
+                System.out.println("Something went Wrong!");
+            }
+            System.out.println("Student Printed Successfully");
+
         }
-        if (!found){
-            System.out.println("Student Not Found! Check RBT Number");
+        else {
+            System.out.println("Invalid RBT! Student not found.");
         }
     }
 }
