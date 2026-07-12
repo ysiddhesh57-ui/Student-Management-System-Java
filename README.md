@@ -1,6 +1,8 @@
 # 🎓 Student Management System
 
-A console-based **Student Management System** developed in **Java** using Object-Oriented Programming principles. The application allows users to manage student records through an interactive menu-driven interface.
+A console-based **Student Management System** developed in **Java** using **Object-Oriented Programming (OOP)** principles. The application allows users to efficiently manage student records through a menu-driven interface.
+
+The project was initially built using **ArrayList** and later **refactored to use HashMap**, improving search, deletion, and duplicate detection by using the student's **RBT Number** as a unique key.
 
 ---
 
@@ -27,10 +29,53 @@ A console-based **Student Management System** developed in **Java** using Object
 
 - Java
 - Object-Oriented Programming (OOP)
-- ArrayList (Collections Framework)
-- File Handling (`FileWriter`, `BufferedWriter`)
+- Collections Framework (`HashMap`)
+- File Handling (`FileReader`, `FileWriter`, `BufferedReader`, `BufferedWriter`)
 - Exception Handling
 - Git & GitHub
+
+---
+
+## 🚀 Key Learning Outcomes
+
+This project demonstrates:
+
+- Object-Oriented Programming
+- Encapsulation
+- Constructors
+- Getters & Setters
+- Method Overriding (`toString()`)
+- Java Collections Framework
+- HashMap
+- File Handling
+- Exception Handling
+- Input Validation
+- Basic CRUD Operations
+- Console-Based Application Development
+
+---
+
+## ⚡ Why HashMap?
+
+The project originally stored students using an `ArrayList<Student>`.
+
+It was later refactored to use:
+
+```java
+HashMap<String, Student>
+```
+
+where:
+
+- **Key** → Student RBT Number
+- **Value** → Student Object
+
+### Benefits
+
+- Faster student lookup (Average **O(1)**)
+- Efficient duplicate RBT detection using `containsKey()`
+- Simpler search and deletion
+- Cleaner project design
 
 ---
 
@@ -50,32 +95,33 @@ src
 ## 🚀 How to Run
 
 1. Clone the repository.
+
+```bash
+git clone https://github.com/ysiddhesh57-ui/Student-Management-System-Java.git
+```
+
 2. Open the project in IntelliJ IDEA (or any Java IDE).
-3. Compile and run `StudentManagementSystem.java`.
-4. Follow the menu displayed in the console.
+
+3. Run:
+
+```
+StudentManagementSystem.java
+```
+
+4. Follow the console menu.
 
 ---
 
-## 📸 Features Demonstrated
+## 📌 Future Improvements
 
-- Object-Oriented Programming
-- Encapsulation
-- Constructors
-- Getters & Setters
-- Method Overriding (`toString()`)
-- Collections (`ArrayList`)
-- Exception Handling
-- File Handling
-- Input Validation
-
----
-
-## 🔮 Future Improvements
-
-- Store student records in a MySQL database using JDBC.
-- Build a Spring Boot REST API.
-- Export student data to CSV format.
-- Add a graphical user interface (GUI).
+- ✏️ Update Student Details
+- 📄 Export Student Data to CSV
+- 📥 Import Student Data from CSV
+- 🔃 Sort Students by CGPA
+- 🔍 Search Students by Name
+- 🗄️ Store Data in MySQL using JDBC
+- 🌐 Build a Spring Boot REST API
+- 🖥️ Develop a GUI Version
 
 ---
 
